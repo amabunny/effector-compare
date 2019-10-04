@@ -120,6 +120,14 @@ const $reversedTasksByFilterType = combine($reversedTodos, $todos, (reversedTodo
   sample($todos, saveEvent, state => state.data).watch(data => {
     tasksApi.save(data)
   })
+
+  2. It also can be untyped merge
+
+  const updated = merge([ addTaskWithDetails, deleteTask, toggleTodoDoneWithDetails ])
+
+  sample($todos, updated, state => state.data).watch(data => {
+    tasksApi.save(data)
+  })
 */
 
 const $todosAndInitialized = $todos.map(({ data, initialized }) => ({

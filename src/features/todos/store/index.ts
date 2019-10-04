@@ -86,7 +86,7 @@ $todos
 
 const $reversedTodos = $todos.map(state => [...state.data].reverse())
 
-const $reversedTasksByFilterType = combine($reversedTodos, $todos, (reversedTodos, { filterType }) => {
+const $reversedTodosByFilterType = combine($reversedTodos, $todos, (reversedTodos, { filterType }) => {
   switch (filterType) {
     case TodoFilterTypes.justDoneTasks:
       return reversedTodos.filter(todo => todo.isDone)
@@ -164,7 +164,7 @@ toggleTodoDone.watch(payload => {
 
 export {
   $todos,
-  $reversedTasksByFilterType,
+  $reversedTodosByFilterType as $reversedTasksByFilterType,
   addTask,
   deleteTask,
   toggleTodoDone,

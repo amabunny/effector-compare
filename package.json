@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://amabunny.github.io",
   "dependencies": {
+    "@types/classnames": "^2.2.9",
     "antd": "^3.23.4",
     "babel-plugin-import": "^1.12.2",
     "classnames": "^2.2.6",

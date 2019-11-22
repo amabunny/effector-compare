@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import cn from 'classnames'
 import { Card, Row, Col, Icon, Checkbox, Typography } from 'antd'
 import { useStore } from 'effector-react'
 import { $reversedTasksByFilterType, toggleTodoDone, deleteTask } from '../../store'
@@ -61,7 +62,9 @@ export const List = ({ itemClassName }: IProps) => {
 
         return (
           <div
-            className={itemClassName}
+            className={cn(itemClassName, {
+              fade: isDone
+            })}
             key={timestamp}
           >
             <Card
@@ -72,12 +75,6 @@ export const List = ({ itemClassName }: IProps) => {
               <Typography.Paragraph style={{ whiteSpace: 'pre-line' }}>
                 {description}
               </Typography.Paragraph>
-
-              <div>
-                <strong>
-                  Создано:&nbsp;
-                </strong>
-              </div>
 
               {!!doneDate && (
                 <div>

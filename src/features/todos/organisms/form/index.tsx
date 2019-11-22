@@ -2,15 +2,19 @@ import React, { useState, useCallback } from 'react'
 import { Form as AntdForm, Input, Button, Typography } from 'antd'
 import { addTask } from '../../store'
 
-export const Form = () => {
-  const [name, setName] = useState('')
+interface IProps {
+  className?: string
+}
+
+export const Form = ({ className }: IProps) => {
   const [description, setDescription] = useState('')
 
-  const onNameChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setName(e.target.value)
+  const submitForm = useCallback(
+    () => {
+      addTask({ description })
+      setDescription('')
     },
-    []
+    [description]
   )
 
   const onDescriptionChange = useCallback(
@@ -20,34 +24,40 @@ export const Form = () => {
     []
   )
 
+  const onTextAreaKeydown = useCallback(
+    (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+      const { key } = e
+
+      if (key === 'Enter') {
+        e.preventDefault()
+        submitForm()
+      }
+    },
+    [submitForm]
+  )
+
   const onSubmit = useCallback(
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
-
-      addTask({ name, description })
-      setName('')
-      setDescription('')
+      submitForm()
     },
-    [description, name]
+    [submitForm]
   )
 
   return (
-    <AntdForm onSubmit={onSubmit}>
+    <AntdForm
+      onSubmit={onSubmit}
+      className={className}
+    >
       <Typography.Title level={4}>
         Добавить задачу:
       </Typography.Title>
-
-      <AntdForm.Item label='Название'>
-        <Input
-          value={name}
-          onChange={onNameChange}
-        />
-      </AntdForm.Item>
 
       <AntdForm.Item label='Описание'>
         <Input.TextArea
           value={description}
           onChange={onDescriptionChange}
+          onKeyDown={onTextAreaKeydown}
           rows={4}
         />
       </AntdForm.Item>

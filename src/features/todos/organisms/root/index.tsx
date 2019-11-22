@@ -1,11 +1,12 @@
 import React, { useEffect, useCallback } from 'react'
-import { Row, Col, Spin } from 'antd'
+import { Spin } from 'antd'
 import { useStoreMap } from 'effector-react'
 import { Form } from '../form'
 import { List } from '../list'
 import { FilterTypesSelect } from '../../molecules/filter-types-select'
 import { $todos, changeFilterType, loadTasks } from '../../store'
 import { TodoFilterTypes } from '../../types'
+import classes from './style.module.less'
 
 export const TodosRoot = () => {
   const { loading, filterType } = useStoreMap({
@@ -30,22 +31,18 @@ export const TodosRoot = () => {
 
   return (
     <Spin spinning={loading}>
-      <Row type='flex' gutter={32}>
-        <Col span={18}>
-          <div className='mb-30'>
-            <FilterTypesSelect
-              value={filterType}
-              onChange={onFilterTypeChange}
-            />
-          </div>
+      <div className={classes.grid}>
+        <div className={classes.filter}>
+          <FilterTypesSelect
+            value={filterType}
+            onChange={onFilterTypeChange}
+          />
+        </div>
 
-          <List />
-        </Col>
+        <List />
 
-        <Col span={6}>
-          <Form />
-        </Col>
-      </Row>
+        <Form className={classes.form} />
+      </div>
     </Spin>
   )
 }

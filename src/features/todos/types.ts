@@ -1,6 +1,5 @@
 export interface ITodo {
   timestamp: number
-  name: string
   description: string
   isDone: boolean
   doneTimestamp?: number

@@ -1,0 +1,33 @@
+@import '~styles/variables';
+
+@columns-count: 4;
+@grid-gap: @indent * 2;
+@grid-item-width: calc(
+  (
+    (100% - @grid-gap) /
+    @columns-count
+  ) - (
+    @grid-gap /
+    2
+  )
+);
+
+.grid {
+  display: grid;
+  grid-gap: @grid-gap;
+  grid-template-areas:
+    "filter filter filter form"
+    ". . . form"
+    ". . . form"
+    ". . . ."
+  ;
+  grid-template-columns: repeat(@columns-count, @grid-item-width);
+}
+
+.filter {
+  grid-area: filter;
+}
+
+.form {
+  grid-area: form;
+}

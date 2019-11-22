@@ -2,7 +2,6 @@ import { createEvent } from 'effector'
 import { TodoFilterTypes } from '../types'
 
 interface IAddTask {
-  name: string
   description: string
 }
 

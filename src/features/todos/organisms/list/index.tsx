@@ -10,7 +10,11 @@ const dateFormatter = Intl.DateTimeFormat(undefined, {
   day: 'numeric'
 })
 
-export const List = () => {
+interface IProps {
+  itemClassName?: string
+}
+
+export const List = ({ itemClassName }: IProps) => {
   const todos = useStore($reversedTasksByFilterType)
 
   const todosWithDates = useMemo(
@@ -29,9 +33,8 @@ export const List = () => {
   )
 
   return (
-    <Row type='flex' gutter={16}>
+    <React.Fragment>
       {todosWithDates.map(({
-        name,
         description,
         timestamp,
         isDone,
@@ -57,18 +60,14 @@ export const List = () => {
         )
 
         return (
-          <Col
-            span={8}
+          <div
+            className={itemClassName}
             key={timestamp}
-            style={{
-              marginBottom: '15px',
-              opacity: isDone ? 0.5 : 1
-            }}
           >
             <Card
-              title={name}
               size='small'
               extra={cardExtra}
+              title={dateFormatter.format(date)}
             >
               <Typography.Paragraph style={{ whiteSpace: 'pre-line' }}>
                 {description}
@@ -78,10 +77,6 @@ export const List = () => {
                 <strong>
                   Создано:&nbsp;
                 </strong>
-
-                <span>
-                  {dateFormatter.format(date)}
-                </span>
               </div>
 
               {!!doneDate && (
@@ -96,9 +91,9 @@ export const List = () => {
                 </div>
               )}
             </Card>
-          </Col>
+          </div>
         )
       })}
-    </Row>
+    </React.Fragment>
   )
 }

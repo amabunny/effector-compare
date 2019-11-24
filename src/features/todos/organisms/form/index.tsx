@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { Form as AntdForm, Input, Button, Typography } from 'antd'
-import { addTask } from '../../store'
+import { addTask } from '../../model'
 
 interface IProps {
   className?: string
@@ -8,11 +8,17 @@ interface IProps {
 
 export const Form = ({ className }: IProps) => {
   const [description, setDescription] = useState('')
+  const [emptyDescError, setEmptyDescError] = useState(false)
 
   const submitForm = useCallback(
     () => {
-      addTask({ description })
-      setDescription('')
+      if (description) {
+        addTask({ description })
+        setDescription('')
+        setEmptyDescError(false)
+      } else {
+        setEmptyDescError(true)
+      }
     },
     [description]
   )
@@ -53,7 +59,12 @@ export const Form = ({ className }: IProps) => {
         Добавить задачу:
       </Typography.Title>
 
-      <AntdForm.Item label='Описание'>
+      <AntdForm.Item
+        label='Описание'
+        validateStatus={emptyDescError ? 'error' : 'success'}
+        required
+        extra={emptyDescError ? 'Введите описание' : ''}
+      >
         <Input.TextArea
           value={description}
           onChange={onDescriptionChange}

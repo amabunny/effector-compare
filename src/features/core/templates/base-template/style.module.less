@@ -1,0 +1,30 @@
+@import '~styles/variables';
+
+.wrapper {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  height: 100vh;
+}
+
+.header {
+  padding: @indent 0;
+  box-shadow: @box-shadow-base;
+  z-index: 2;
+}
+
+.content {
+  overflow: auto;
+  z-index: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+
+.contentPaper {
+  padding: @indent * 2 0;
+}
+
+.footer {
+  padding: @indent 0;
+  background-color: @menu-dark-bg;
+  color: @white;
+}

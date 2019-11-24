@@ -2,7 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 import { Card, Row, Col, Icon, Checkbox, Typography } from 'antd'
 import { useList } from 'effector-react'
-import { $preparedTodos, toggleTodoDone, deleteTask } from '../../store'
+import { $preparedTodos, toggleTodoDone, deleteTask } from '../../model'
 
 const dateFormatter = Intl.DateTimeFormat(undefined, {
   hour: 'numeric',

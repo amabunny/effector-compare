@@ -1,5 +1,5 @@
 import React from 'react'
-import * as classes from './style.module.css'
+import { BaseTemplate, Container } from 'features/core'
 
 interface IProps {
   children: React.ReactNode
@@ -7,8 +7,10 @@ interface IProps {
 
 export const TodosTemplate = ({ children }: IProps) => {
   return (
-    <div className={classes.wrapper}>
-      {children}
-    </div>
+    <BaseTemplate>
+      <Container>
+        {children}
+      </Container>
+    </BaseTemplate>
   )
 }

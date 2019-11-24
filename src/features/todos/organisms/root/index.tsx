@@ -5,7 +5,7 @@ import { useStoreMap, useStore } from 'effector-react'
 import { Form } from '../form'
 import { List } from '../list'
 import { FilterTypesSelect } from '../../molecules/filter-types-select'
-import { $todos, $params, setParams, loadTasks } from '../../store'
+import { $todos, $params, setParams, loadTasks } from '../../model'
 import { TodoFilterTypes } from '../../types'
 import classes from './style.module.less'
 
@@ -85,6 +85,7 @@ export const TodosRoot = () => {
             <Input.Search
               value={filterString}
               onChange={onFilterStringChange}
+              placeholder='Поиск...'
             />
           </div>
         </div>

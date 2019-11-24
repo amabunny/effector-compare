@@ -1,5 +1,5 @@
 import { createEvent } from 'effector'
-import { TodoFilterTypes } from '../types'
+import { IParams } from '../types'
 
 interface IAddTask {
   description: string
@@ -20,12 +20,6 @@ interface IDeleteTask {
 
 export const deleteTask = createEvent<IDeleteTask>()
 
-interface IChangeFilterType {
-  filterType: TodoFilterTypes
-}
-
-export const changeFilterType = createEvent<IChangeFilterType>()
-
 interface IToggleTodoDone {
   todoTimestamp: number
   flag: boolean
@@ -39,4 +33,4 @@ interface IToggleTodoDoneWithDetails extends IToggleTodoDone {
 
 export const toggleTodoDoneWithDetails = createEvent<IToggleTodoDoneWithDetails>()
 
-export const saveEvent = createEvent<unknown>()
+export const setParams = createEvent<Partial<IParams>>()

@@ -1,21 +1,20 @@
 import { createStore, combine } from 'effector'
+import moment from 'moment'
 import { loadTasks } from './effects'
 import {
   addTask,
   addTaskWithDetails,
   deleteTask,
-  changeFilterType,
   toggleTodoDone,
-  toggleTodoDoneWithDetails
+  toggleTodoDoneWithDetails,
+  setParams
 } from './events'
-import { ITodosState, TodoFilterTypes } from '../types'
+import { ITodosState, TodoFilterTypes, IParams } from '../types'
 import { tasksApi } from 'api'
 
 const initialState: ITodosState = {
   loading: false,
-  initialized: false,
-  data: [],
-  filterType: TodoFilterTypes.allTasks
+  data: []
 }
 
 const $todos = createStore(initialState)
@@ -62,12 +61,6 @@ $todos
     })
   )
   .on(
-    changeFilterType, (state, { filterType }) => ({
-      ...state,
-      filterType
-    })
-  )
-  .on(
     toggleTodoDoneWithDetails, (state, { todoTimestamp, doneTimestamp, flag }) => ({
       ...state,
       data: state.data.map(todo => {
@@ -84,19 +77,65 @@ $todos
     })
   )
 
-const $reversedTodos = $todos.map(state => [...state.data].reverse())
+const initialParamsState: IParams = {
+  dates: [
+    moment().add(-1, 'week').startOf('week').startOf('day'),
+    moment().endOf('week').endOf('day')
+  ],
+  filterString: '',
+  filterType: TodoFilterTypes.allTasks,
+  initialized: false
+}
 
-const $reversedTodosByFilterType = combine($reversedTodos, $todos, (reversedTodos, { filterType }) => {
+const $params = createStore(initialParamsState)
+
+$params.on(setParams, (state, params) => ({
+  ...state,
+  ...params
+}))
+
+const $reversedTodos = $todos.map(state =>
+  [...state.data].reverse()
+)
+
+const $preparedTodos = combine($reversedTodos, $params, (reversedTodos, { filterType, filterString, dates }) => {
+  let preparedTodos = [...reversedTodos]
+
   switch (filterType) {
     case TodoFilterTypes.justDoneTasks:
-      return reversedTodos.filter(todo => todo.isDone)
+      preparedTodos = preparedTodos.filter(todo => todo.isDone)
+      break
 
     case TodoFilterTypes.justUndoneTasks:
-      return reversedTodos.filter(todo => !todo.isDone)
-
-    default:
-      return reversedTodos
+      preparedTodos = preparedTodos.filter(todo => !todo.isDone)
+      break
   }
+
+  if (dates) {
+    preparedTodos = preparedTodos.filter(item => {
+      const itemMomentDate = moment(item.timestamp).startOf('day')
+      const [startPeriod, endPeriod] = dates
+
+      const itemDateMoreThanStartPeriod =  itemMomentDate.unix() >= startPeriod.unix()
+      const itemDateLessThanEndPeriod = itemMomentDate.unix() <= endPeriod.unix()
+
+      if (itemDateMoreThanStartPeriod && itemDateLessThanEndPeriod) {
+        return true
+      }
+
+      return false
+    })
+  }
+
+  if (filterString) {
+    preparedTodos = preparedTodos.filter(todo =>
+      todo.description.toUpperCase().includes(
+        filterString.toUpperCase()
+      )
+    )
+  }
+
+  return preparedTodos
 })
 
 /*
@@ -130,7 +169,7 @@ const $reversedTodosByFilterType = combine($reversedTodos, $todos, (reversedTodo
   })
 */
 
-const $todosAndInitialized = $todos.map(({ data, initialized }) => ({
+const $todosAndInitialized = combine($todos, $params, ({ data }, { initialized }) => ({
   data,
   initialized
 }))
@@ -164,10 +203,11 @@ toggleTodoDone.watch(payload => {
 
 export {
   $todos,
-  $reversedTodosByFilterType as $reversedTasksByFilterType,
+  $preparedTodos,
+  $params,
   addTask,
   deleteTask,
   toggleTodoDone,
-  changeFilterType,
-  loadTasks
+  loadTasks,
+  setParams
 }

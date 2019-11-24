@@ -1,3 +1,5 @@
+import { Moment } from 'moment'
+
 export interface ITodo {
   timestamp: number
   description: string
@@ -27,6 +29,11 @@ export const TodoFilterTypesTranslates: ITodoFitlerTypesTranslates = {
 export interface ITodosState {
   loading: boolean
   data: ITodo[]
+}
+
+export interface IParams {
   filterType: TodoFilterTypes
+  filterString: string
+  dates: [Moment, Moment] | null
   initialized: boolean
 }

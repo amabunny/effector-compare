@@ -4,7 +4,9 @@
   "private": true,
   "homepage": "https://amabunny.github.io",
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "@types/classnames": "^2.2.9",
+    "@types/reach__router": "^1.2.6",
     "antd": "^3.25.2",
     "babel-plugin-import": "^1.12.2",
     "classnames": "^2.2.6",

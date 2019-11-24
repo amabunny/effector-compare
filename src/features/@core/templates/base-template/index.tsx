@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from '../../atoms/container'
+import { Menu } from '../../molecules/menu'
 import { DEFAULT_PROJECT_NAME } from '../../model'
 import classes from './style.module.less'
 
@@ -16,7 +17,13 @@ export const BaseTemplate = ({
     <div className={classes.wrapper}>
       <div className={classes.header}>
         <Container>
-          {pageTitle}
+          <div className={classes.headerContainer}>
+            <div>
+              {pageTitle}
+            </div>
+
+            <Menu />
+          </div>
         </Container>
       </div>
 

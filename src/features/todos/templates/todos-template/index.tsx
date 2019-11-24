@@ -1,5 +1,5 @@
 import React from 'react'
-import { BaseTemplate, Container } from 'features/core'
+import { BaseTemplate, Container } from 'features/@core'
 
 interface IProps {
   children: React.ReactNode
@@ -7,7 +7,7 @@ interface IProps {
 
 export const TodosTemplate = ({ children }: IProps) => {
   return (
-    <BaseTemplate>
+    <BaseTemplate pageTitle='Todos'>
       <Container>
         {children}
       </Container>

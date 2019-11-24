@@ -1,8 +1,8 @@
 import React from "react"
-import { TodosPage } from 'features/todos'
+import { Router } from './router'
 
 export const App = () => {
   return (
-    <TodosPage />
+    <Router />
   )
 }

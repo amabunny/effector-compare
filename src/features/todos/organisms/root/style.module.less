@@ -4,12 +4,12 @@
   display: grid;
   grid-gap: @indent * 2;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto auto;
+  grid-template-rows: auto auto auto;
 }
 
 .filter {
   grid-area: filter;
-  grid-column: ~"1/4";
+  grid-column: ~"1/span 4";
   grid-row: 1;
   display: grid;
   grid-gap: @indent;
@@ -20,15 +20,16 @@
 .form {
   grid-area: form;
   grid-column: ~"4";
-  grid-row: 2;
+  grid-row: ~"2/span 4";
 }
 
 .list {
   grid-area: list;
-  grid-row: 2;
+  grid-row: ~"2/span 4";
   grid-column: ~"1/4";
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  align-content: baseline;
   grid-gap: @indent;
 }

@@ -1,0 +1,26 @@
+@import '~styles/variables';
+
+.card {
+  border-radius: 5px;
+
+  :global {
+    .ant-card-head {
+      background-color: @grey-color;
+    }
+  }
+}
+
+.done {
+  padding-top: @indent;
+  display: inline-grid;
+  grid-gap: @indent / 2;
+  grid-auto-flow: column;
+  font-size: 85%;
+  align-items: center;
+  line-height: 1;
+}
+
+.taskText {
+  white-space: 'pre-line';
+  margin: 0;
+}

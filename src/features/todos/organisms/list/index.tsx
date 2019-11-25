@@ -1,8 +1,10 @@
 import React from 'react'
 import cn from 'classnames'
+import moment from 'moment'
 import { Card, Row, Col, Icon, Checkbox, Typography } from 'antd'
 import { useList } from 'effector-react'
 import { $preparedTodos, toggleTodoDone, deleteTask } from '../../model'
+import classes from './style.module.less'
 
 const dateFormatter = Intl.DateTimeFormat(undefined, {
   hour: 'numeric',
@@ -48,36 +50,33 @@ export const List = ({ itemClassName }: IProps) => {
 
     return (
       <React.Fragment>
-        <div
-          className={cn(itemClassName, {
+        <Card
+          size='small'
+          extra={cardExtra}
+          title={dateFormatter.format(date)}
+          className={cn(itemClassName, classes.card, {
             fade: isDone
           })}
           key={timestamp}
         >
-          <Card
-            size='small'
-            extra={cardExtra}
-            title={dateFormatter.format(date)}
-          >
-            <Typography.Paragraph style={{ whiteSpace: 'pre-line', margin: 0 }}>
-              {description}
-            </Typography.Paragraph>
+          <Typography.Paragraph className={classes.taskText}>
+            {description}
+          </Typography.Paragraph>
 
-            {!!doneDate && (
-              <div>
-                <br />
+          {!!doneDate && (
+            <div className={classes.done}>
+              <span>
+                <Icon type='check-circle' />
+              </span>
 
-                <strong>
-                  Завершено:&nbsp;
-                </strong>
-
+              <span>
                 <span>
-                  {dateFormatter.format(doneDate)}
+                  {moment(doneDate).format('LLLL')}
                 </span>
-              </div>
-            )}
-          </Card>
-        </div>
+              </span>
+            </div>
+          )}
+        </Card>
       </React.Fragment>
     )
   })

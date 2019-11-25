@@ -3,6 +3,7 @@
 .grid {
   display: grid;
   grid-gap: @indent * 2;
+  column-gap: @indent * 4;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto auto;
 }
@@ -30,6 +31,6 @@
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-content: baseline;
-  grid-gap: @indent;
+  align-items: start;
+  grid-gap: @indent * 1.5;
 }

@@ -1,4 +1,4 @@
 import { createEvent } from 'effector'
-import { availableLocales } from '../types'
+import { AvailableLocales } from '../types'
 
-export const changeLocale = createEvent<availableLocales>()
+export const changeLocale = createEvent<AvailableLocales>()

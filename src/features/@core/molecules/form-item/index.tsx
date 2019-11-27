@@ -12,11 +12,11 @@ export const FormItem = ({ children, label, vertical }: IProps) => {
   return (
     <div
       className={cn(classes.wrapper, {
-        [classes.vertial]: vertical
+        [classes.vertical]: vertical
       })}
     >
       <label>
-        {label}
+        {label}:
       </label>
 
       <div>

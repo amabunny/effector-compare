@@ -2,11 +2,12 @@
 
 .wrapper {
   display: grid;
-  grid-auto-flow: column;
   grid-template-columns: auto 1fr;
   grid-gap: @indent;
+  align-items: center;
 }
 
 .vertical {
-  grid-auto-flow: row;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
 }

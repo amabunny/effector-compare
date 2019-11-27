@@ -6,8 +6,11 @@ import { LanguagesSelect } from '../languages-select'
 export const Root = () => {
   return (
     <div>
-      <FormItem label={<FormattedMessage id='settings.languagesSelect' />}>
-        <LanguagesSelect style={{ width: '100%' }} />
+      <FormItem
+        label={<FormattedMessage id='settings.languagesSelect' />}
+        vertical
+      >
+        <LanguagesSelect style={{ width: '250px' }} />
       </FormItem>
     </div>
   )

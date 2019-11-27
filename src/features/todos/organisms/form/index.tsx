@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react'
+import { useIntl } from 'react-intl'
 import { Form as AntdForm, Input, Button, Typography } from 'antd'
 import { addTask } from '../../model'
 
@@ -7,6 +8,7 @@ interface IProps {
 }
 
 export const Form = ({ className }: IProps) => {
+  const { formatMessage } = useIntl()
   const [description, setDescription] = useState('')
   const [emptyDescError, setEmptyDescError] = useState(false)
 
@@ -56,14 +58,14 @@ export const Form = ({ className }: IProps) => {
       className={className}
     >
       <Typography.Title level={4}>
-        Добавить задачу:
+        {formatMessage({ id: 'tasks.form.addTask' })}
       </Typography.Title>
 
       <AntdForm.Item
-        label='Описание'
+        label={formatMessage({ id: 'tasks.form.description' })}
         validateStatus={emptyDescError ? 'error' : 'success'}
         required
-        extra={emptyDescError ? 'Введите описание' : ''}
+        extra={emptyDescError ? formatMessage({ id: 'tasks.form.enterDescription' }) : ''}
       >
         <Input.TextArea
           value={description}
@@ -75,7 +77,7 @@ export const Form = ({ className }: IProps) => {
 
       <AntdForm.Item>
         <Button type='primary' htmlType='submit'>
-          Добавить
+          {formatMessage({ id: 'tasks.form.add' })}
         </Button>
       </AntdForm.Item>
     </AntdForm>

@@ -6,5 +6,12 @@
   "settings.languagesSelect.ru-RU": "Русский",
   "menu.todos": "Задачник",
   "menu.about": "Обо мне",
-  "menu.settings": "Настройки"
+  "menu.settings": "Настройки",
+  "tasks.form.addTask": "Добавить задачу",
+  "tasks.form.description": "Описание",
+  "tasks.form.enterDescription": "Пожалуйста, введите описание",
+  "tasks.form.add": "Добавить",
+  "tasks.filterTypesSelect.justDoneTasks": "Только выполненные",
+  "tasks.filterTypesSelect.justUndoneTasks": "Только невыполненные",
+  "tasks.filterTypesSelect.allTasks": "Все"
 }

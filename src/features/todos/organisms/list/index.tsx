@@ -1,17 +1,10 @@
 import React from 'react'
 import cn from 'classnames'
-import moment from 'moment'
+import { FormattedDate } from 'react-intl'
 import { Card, Row, Col, Icon, Checkbox, Typography } from 'antd'
 import { useList } from 'effector-react'
 import { $preparedTodos, toggleTodoDone, deleteTask } from '../../model'
 import classes from './style.module.less'
-
-const dateFormatter = Intl.DateTimeFormat(undefined, {
-  hour: 'numeric',
-  minute: 'numeric',
-  month: 'long',
-  day: 'numeric'
-})
 
 interface IProps {
   itemClassName?: string
@@ -53,7 +46,15 @@ export const List = ({ itemClassName }: IProps) => {
         <Card
           size='small'
           extra={cardExtra}
-          title={dateFormatter.format(date)}
+          title={(
+            <FormattedDate
+              value={date}
+              hour='numeric'
+              minute='numeric'
+              day='numeric'
+              month='long'
+            />
+          )}
           className={cn(itemClassName, classes.card, {
             fade: isDone
           })}
@@ -71,7 +72,13 @@ export const List = ({ itemClassName }: IProps) => {
 
               <span>
                 <span>
-                  {moment(doneDate).format('LLLL')}
+                  <FormattedDate
+                    value={doneDate}
+                    hour='numeric'
+                    minute='numeric'
+                    day='numeric'
+                    month='long'
+                  />
                 </span>
               </span>
             </div>

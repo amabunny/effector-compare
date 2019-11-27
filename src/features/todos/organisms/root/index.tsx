@@ -2,12 +2,15 @@ import React, { useEffect, useCallback } from 'react'
 import { Spin, DatePicker, Input } from 'antd'
 import { RangePickerProps } from 'antd/lib/date-picker/interface'
 import { useStoreMap, useStore } from 'effector-react'
+import moment from 'moment'
 import { Form } from '../form'
 import { List } from '../list'
 import { FilterTypesSelect } from '../../molecules/filter-types-select'
 import { $todos, $params, setParams, loadTasks } from '../../model'
 import { TodoFilterTypes } from '../../types'
 import classes from './style.module.less'
+
+const defaultDateFormat = moment().localeData().longDateFormat('L')
 
 export const TodosRoot = () => {
   const { dates, filterString, filterType } = useStore($params)
@@ -76,6 +79,7 @@ export const TodosRoot = () => {
             <DatePicker.RangePicker
               allowClear
               onChange={onDatesChange}
+              format={defaultDateFormat}
               value={dates || undefined}
               style={{ width: '289px' }}
             />

@@ -1,7 +1,8 @@
 import React, { Fragment, useMemo, useCallback } from 'react'
+import { FormattedMessage } from 'react-intl'
 import { Select } from 'antd'
 import { SelectValue } from 'antd/lib/select'
-import { TodoFilterTypes, TodoFilterTypesTranslates } from '../../types'
+import { TodoFilterTypes } from '../../types'
 
 interface IProps {
   value: TodoFilterTypes
@@ -38,7 +39,7 @@ export const FilterTypesSelect = ({ value, onChange }: IProps) => {
             key={key}
             value={key}
           >
-            {TodoFilterTypesTranslates[key]}
+            <FormattedMessage id={`tasks.filterTypesSelect.${key}`} />
           </Select.Option>
         )}
       </Select>

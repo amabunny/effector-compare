@@ -116,8 +116,8 @@ const $preparedTodos = combine($reversedTodos, $params, (reversedTodos, { filter
       const itemMomentDate = moment(item.timestamp).startOf('day')
       const [startPeriod, endPeriod] = dates
 
-      const itemDateMoreThanStartPeriod =  itemMomentDate.unix() >= startPeriod.unix()
-      const itemDateLessThanEndPeriod = itemMomentDate.unix() <= endPeriod.unix()
+      const itemDateMoreThanStartPeriod =  itemMomentDate.isSameOrAfter(startPeriod)
+      const itemDateLessThanEndPeriod = itemMomentDate.isSameOrBefore(endPeriod)
 
       if (itemDateMoreThanStartPeriod && itemDateLessThanEndPeriod) {
         return true

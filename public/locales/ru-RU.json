@@ -1,0 +1,10 @@
+{
+  "todos": "Задачник",
+  "about": "Обо мне",
+  "settings.languagesSelect": "Выбор языка",
+  "settings.languagesSelect.en-US": "Английский",
+  "settings.languagesSelect.ru-RU": "Русский",
+  "menu.todos": "Задачник",
+  "menu.about": "Обо мне",
+  "menu.settings": "Настройки"
+}

@@ -1,0 +1,10 @@
+{
+  "todos": "Todos",
+  "about": "About",
+  "settings.languagesSelect": "Choose language",
+  "settings.languagesSelect.en-US": "English",
+  "settings.languagesSelect.ru-RU": "Russian",
+  "menu.todos": "Todos",
+  "menu.about": "About me",
+  "menu.settings": "Settings"
+}

@@ -8,10 +8,10 @@ import { SettingsPage } from 'features/settings'
 import { SequencesPage } from 'features/sequences'
 
 const appRoutes: IRoutesSchema = {
-  '/': TodosPage,
+  '/': SequencesPage,
   '/about': AboutPage,
   '/settings': SettingsPage,
-  '/sequences': SequencesPage
+  '/todos': TodosPage
 }
 
 export const Router = () => (

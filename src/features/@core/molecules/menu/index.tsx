@@ -14,14 +14,14 @@ interface IMenuItem {
 
 const menuItems: IMenuItem[] = [
   {
-    intl: 'menu.todos',
+    intl: 'menu.sequences',
     path: '/',
-    icon: 'unordered-list'
+    icon: 'ordered-list'
   },
   {
-    intl: 'menu.sequences',
-    path: '/sequences',
-    icon: 'ordered-list'
+    intl: 'menu.todos',
+    path: '/todos',
+    icon: 'unordered-list'
   },
   {
     intl: 'menu.about',

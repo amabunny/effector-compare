@@ -2,7 +2,7 @@
   "name": "redux-todo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://amabunny.github.io",
+  "homepage": "https://amabunny.github.io/effector-compare",
   "dependencies": {
     "@reach/router": "^1.2.1",
     "@types/classnames": "^2.2.9",

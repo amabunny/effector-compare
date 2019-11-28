@@ -36,7 +36,8 @@ export const Root = () => {
               minute: 'numeric',
               day: 'numeric',
               month: 'numeric',
-              year: 'numeric'
+              year: 'numeric',
+              second: 'numeric'
             })
 
             addLogRecord(

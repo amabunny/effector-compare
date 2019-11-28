@@ -6,7 +6,7 @@ import classes from './style.module.less'
 
 interface IProps {
   children: React.ReactNode
-  pageTitle?: string
+  pageTitle?: React.ReactNode
 }
 
 export const BaseTemplate = ({

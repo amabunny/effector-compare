@@ -1,0 +1,23 @@
+@import "~styles/variables";
+
+.wrapper {
+  display: inline-grid;
+  grid-gap: @indent;
+}
+
+.buttons {
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: @indent;
+  justify-content: start;
+}
+
+.textarea {
+  width: 600px;
+}
+
+.footer {
+  display: grid;
+  justify-content: end;
+  grid-auto-flow: column;
+}

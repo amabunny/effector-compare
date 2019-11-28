@@ -22,6 +22,11 @@ const menuItems: IMenuItem[] = [
     icon: 'user'
   },
   {
+    intl: 'menu.sequences',
+    path: '/sequences',
+    icon: 'ordered-list'
+  },
+  {
     intl: 'menu.settings',
     path: '/settings',
     icon: 'setting'

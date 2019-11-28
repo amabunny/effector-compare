@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/effector-compare/static/css/main.74827970.chunk.css",
-    "main.js": "/effector-compare/static/js/main.9b71b167.chunk.js",
-    "main.js.map": "/effector-compare/static/js/main.9b71b167.chunk.js.map",
+    "main.js": "/effector-compare/static/js/main.f720aa03.chunk.js",
+    "main.js.map": "/effector-compare/static/js/main.f720aa03.chunk.js.map",
     "runtime-main.js": "/effector-compare/static/js/runtime-main.44373a27.js",
     "runtime-main.js.map": "/effector-compare/static/js/runtime-main.44373a27.js.map",
     "static/css/2.68c05dbd.chunk.css": "/effector-compare/static/css/2.68c05dbd.chunk.css",
     "static/js/2.1b7d8f25.chunk.js": "/effector-compare/static/js/2.1b7d8f25.chunk.js",
     "static/js/2.1b7d8f25.chunk.js.map": "/effector-compare/static/js/2.1b7d8f25.chunk.js.map",
     "index.html": "/effector-compare/index.html",
-    "precache-manifest.b279592c208a6cf45be170d59fbfc8d5.js": "/effector-compare/precache-manifest.b279592c208a6cf45be170d59fbfc8d5.js",
+    "precache-manifest.db9f0d6d28d0334d6564c34ddf5c08f7.js": "/effector-compare/precache-manifest.db9f0d6d28d0334d6564c34ddf5c08f7.js",
     "service-worker.js": "/effector-compare/service-worker.js",
     "static/css/2.68c05dbd.chunk.css.map": "/effector-compare/static/css/2.68c05dbd.chunk.css.map",
     "static/css/main.74827970.chunk.css.map": "/effector-compare/static/css/main.74827970.chunk.css.map"

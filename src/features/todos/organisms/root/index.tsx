@@ -53,17 +53,6 @@ export const TodosRoot = () => {
     []
   )
 
-  useEffect(
-    () => {
-      setParams({ initialized: true })
-
-      return () => {
-        setParams({ initialized: false })
-      }
-    },
-    []
-  )
-
   return (
     <Spin spinning={loading}>
       <div className={classes.grid}>

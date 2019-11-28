@@ -4,6 +4,8 @@ import { FormattedMessage } from 'react-intl'
 import { Icon } from 'antd'
 import classes from './style.module.less'
 
+const menuRoutePrefix = process.env.REACT_APP_SITE_PREFIX || ''
+
 interface IMenuItem {
   intl: string
   path: string
@@ -39,7 +41,7 @@ export const Menu = () => (
       <li key={path}>
         <Link
           className={classes.link}
-          to={path}
+          to={menuRoutePrefix + path}
         >
           <Icon type={icon} />
           <FormattedMessage id={intl} />

@@ -1,20 +1,29 @@
-import React, { useMemo, useCallback } from 'react'
+import React, { useMemo, useCallback, useEffect } from 'react'
 import { FormattedMessage, useIntl } from 'react-intl'
 import { Button, Input } from 'antd'
 import { useStore } from 'effector-react'
 import { $logs, addSequenceItem, addLogRecord, clearSequence, resetLogs } from '../../model'
 import classes from './style.module.less'
 
+const TEXTAREA_ROWS = 17
+
 export const Root = () => {
   const { formatMessage, formatDate } = useIntl()
   const logs = useStore($logs)
 
-  const onResetClick = useCallback(
+  const reset = useCallback(
     () => {
       clearSequence({ filter: () => false })
       resetLogs()
     },
     []
+  )
+
+  const onResetClick = useCallback(
+    () => {
+      reset()
+    },
+    [reset]
   )
 
   const buttons = useMemo(
@@ -54,6 +63,15 @@ export const Root = () => {
     [formatDate, formatMessage]
   )
 
+  useEffect(
+    () => {
+      return () => {
+        reset()
+      }
+    },
+    [reset]
+  )
+
   return (
     <div className={classes.wrapper}>
       <div className={classes.buttons}>
@@ -64,7 +82,7 @@ export const Root = () => {
         <Input.TextArea
           className={classes.textarea}
           readOnly
-          rows={10}
+          rows={TEXTAREA_ROWS}
           value={logs.join('\n')}
         />
       </div>

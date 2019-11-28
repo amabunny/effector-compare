@@ -17,14 +17,14 @@ const menuItems: IMenuItem[] = [
     icon: 'unordered-list'
   },
   {
-    intl: 'menu.about',
-    path: '/about',
-    icon: 'user'
-  },
-  {
     intl: 'menu.sequences',
     path: '/sequences',
     icon: 'ordered-list'
+  },
+  {
+    intl: 'menu.about',
+    path: '/about',
+    icon: 'user'
   },
   {
     intl: 'menu.settings',
